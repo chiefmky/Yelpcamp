@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>YelpCamp</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <link rel="stylesheet" href="/stylesheets/sticky-footer.css">
+        
+        <!-- Make site responsive on mobile/tablet -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body style="background: linear-gradient(to right, #ffd89b, #19547b);">
+       <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+          <a class="navbar-brand" href="/"><i class="fas fa-campground"></i>YelpCamp</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>">
+                <a href="/campgrounds" class="nav-link">Home</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+                <% if(!currentUser){ %>
+                    <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
+                      <a href="/login" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">
+                      <a href="/register" class="nav-link">Sign Up</a>
+                    </li>
+                <% } else { %>
+                    <% if(currentUser && currentUser.isAdmin){ %>
+                          <li class="nav-item">
+                              <a href="#" class="nav-link">Signed In As Admin</a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="/logout" class="nav-link">Logout</a>
+                          </li>
+                    <% } else { %>
+                          <li class="nav-item">
+                          <a href="#" class="nav-link">Signed In As <%= currentUser.username %></a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="/logout" class="nav-link">Logout</a>
+                          </li>
+                    <% } %>
+                <% } %>
+                <form action="/campgrounds" method="GET" class="form-inline mt-2 mt-md-0">
+                   <div class="form-group">
+                       <input type="text" name="search" placeholder="Campground search..." class="form-control mr-sm-2">
+                       <input type="submit" value="Search" class="btn btn-outline-success my-2 my-sm-0">
+                   </div>
+                </form> 
+            </ul>
+          </div>
+        </nav>
+        
+            <div class="container">
+                <% if(error && error.length > 0){ %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+                
+                <% if(success && success.length > 0){ %>
+                    <div class="alert alert-success" role="alert">
+                        <%= success %>
+                    </div>
+                <% } %>
+            </div>
+            <div class ="container">

@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+    <div class="container">
+      <div class="row">
+        <div class="card" style="width: 18rem; margin-right:10px;">
+          <img src="<%= user.avatar %>"  alt="" class="img-thumbnail">
+        </div>
+        <div class="span4">
+          <blockquote>
+            <p><%= user.firstname + " " + user.lastname %></p>
+            <small><cite title="Source Title"><%= user.username %></cite></small>
+          </blockquote>
+          <p>
+            <i class=" fas fa-envelope"></i> <%= user.email %> <br>
+            <i class="fas fa-globe"></i> www.bootsnipp.com <br>
+            <i class="fas fa-gift"></i> January 30, 1974
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+
+<% include ../partials/footer %>
