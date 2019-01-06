@@ -64,7 +64,7 @@ router.get("/logout",function(req, res) {
 
 //FORGOT PASSOWORD
 router.get("/forgot",function(req, res) {
-    res.render("/forgot");
+    res.render("forgot");
 });
 
 router.post("/forgot",function(req, res, next){
