@@ -17,11 +17,11 @@ var commentRoutes= require("./routes/comments"),
     campgroundRoutes= require("./routes/campgrounds"),
     indexRoutes = require("./routes/index");
 
-mongoose.connect(process.env.DATABASEURL);
+//mongoose.connect(process.env.DATABASEURL);
 
 
 //mongolab
-//mongoose.connect("mongodb://moise:brigitte0903@ds153705.mlab.com:53705/yelpcamp");
+mongoose.connect("mongodb://moise:brigitte0903@ds153705.mlab.com:53705/yelpcamp");
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine", "ejs");
