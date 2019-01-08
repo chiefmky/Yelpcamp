@@ -3,7 +3,10 @@ var express = require("express"),
     Campground = require("../models/campground"),
     middleware = require("../middleware/"),
     NodeGeocoder = require('node-geocoder'),
-    multer = require('multer');
+    User = require("../models/user"),
+    multer = require('multer'),
+    Notification = require("../models/notification"),
+    vmiddleware = require("../middleware");
     
 var storage = multer.diskStorage({
   filename: function(req, file, callback) {
@@ -107,6 +110,16 @@ router.post("/", middleware.isLoggedIn, upload.single('image'), async function(r
 	  req.body.campground.location = data[0].formattedAddress;
 	  // create campground from updated req.body.campground object
 	  let campground = await Campground.create(req.body.campground);
+	  let user = await User.findById(req.user._id).populate('followers').exec();
+      let newNotification = {
+        username: req.user.username,
+        campgroundId: campground.id
+      }
+      for(const follower of user.followers) {
+        let notification = await Notification.create(newNotification);
+        follower.notifications.push(notification);
+        follower.save();
+      }
 	  // redirect to campground show page
 	  res.redirect("/campgrounds/" + campground._id);
 	} catch(err) {

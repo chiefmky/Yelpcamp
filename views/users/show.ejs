@@ -6,18 +6,27 @@
         </div>
         <div class="span4">
           <blockquote>
-            <p><%= user.firstname + " " + user.lastname %></p>
-            <small><cite title="Source Title"><%= user.username %></cite></small>
+            <p>
+              <i class="fas fa-user"></i> <%= user.firstname + " " + user.lastname %> <br>
+               &#64;<%= user.username %>
+            </p>
+            <a href="/follow/<%= user.id %>"><button class="btn btn-primary">Follow <%= user.username %></button></a>
+            
           </blockquote>
           <p>
             <i class=" fas fa-envelope"></i> <%= user.email %> <br>
-            <i class="fas fa-globe"></i> www.bootsnipp.com <br>
             <i class="fas fa-gift"></i> January 30, 1974
           </p>
-        </div>
+          <p>
+            <h3>My campgrounds</h3>
+            <ul>
+              <% campgrounds.forEach(function(campground){ %>
+                <li><a href="/campgrounds/<%= campground.id %>"><%= campground.name %></a></li>
+              <% }) %>
+            </ul>
+          </p>
       </div>
     </div>
-
 
 
 <% include ../partials/footer %>
