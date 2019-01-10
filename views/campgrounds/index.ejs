@@ -37,7 +37,8 @@
                   <img class="card-img-top" src="<%= campground.image %>" alt="<%= campground.name %>">
                   <div class="card-body">
                     <h5 class="card-title"><%= campground.name %></h5>
-                    <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                    <h6 style="font-weight:normal;">$<%= campground.price %>/night</h6>
+                    <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary"><i class="fas fa-info"></i>  More Info</a>
                   </div>
                 </div>
             </div>

@@ -20,16 +20,16 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>">
-                <a href="/campgrounds" class="nav-link">Home</a>
+                <a href="/campgrounds" class="nav-link"><i class="fas fa-home"></i> Home</a>
               </li>
             </ul>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" style="position:relative;top:7px;">
                 <% if(!currentUser){ %>
                     <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
-                      <a href="/login" class="nav-link">Login</a>
+                      <a href="/login" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
                     </li>
                     <li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">
-                      <a href="/register" class="nav-link">Sign Up</a>
+                      <a href="/register" class="nav-link"><i class="fas fa-user-plus"></i> Sign Up</a>
                     </li>
                 <% } else { %>
                     <% if(currentUser && currentUser.isAdmin){ %>
