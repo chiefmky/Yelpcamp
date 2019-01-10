@@ -1,17 +1,15 @@
 <% include ../partials/header %>
     <div class="container">
       <div class="row">
-        <div class="card" style="width: 18rem; margin-right:10px;">
+        <div style="width:15rem; margin-right:10px;">
           <img src="<%= user.avatar %>"  alt="" class="img-thumbnail">
         </div>
-        <div class="span4">
+        <div>
           <blockquote>
             <p>
               <i class="fas fa-user"></i> <%= user.firstname + " " + user.lastname %> <br>
                &#64;<%= user.username %>
             </p>
-            <a href="/follow/<%= user.id %>"><button class="btn btn-primary">Follow <%= user.username %></button></a>
-            
           </blockquote>
           <p>
             <i class=" fas fa-envelope"></i> <%= user.email %> <br>
@@ -25,8 +23,8 @@
               <% }) %>
             </ul>
           </p>
+          <a href="/follow/<%= user.id %>"><button class="btn btn-primary">Follow <%= user.username %></button></a>
+        </div>
       </div>
     </div>
-
-
 <% include ../partials/footer %>
