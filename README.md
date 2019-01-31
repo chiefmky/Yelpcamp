@@ -24,4 +24,8 @@ Front-end: HTML5, CSS3, JavaScript, Bootstrap4 for responsive layout, and jQuery
   ADD, REMOVE AND UPDATE COMMENTS
   As said above, you can add comments to campgrounds to express all kinds of things, 
 
-YelpCamp is a Single application built from scratch using the following technologies:
+ User Profile
+  The user will have a profile and other users can follow him
+ 
+ Notification
+  A user can receive notification about new campground from user he follows
