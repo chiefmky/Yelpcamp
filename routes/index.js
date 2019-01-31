@@ -186,7 +186,7 @@ router.post("/reset/:token", function(req, res) {
 
 
 //USER PROFILE
-router.get("/users/:id", async function(req, res) {
+router.get("/users/:id", isLoggedIn,async function(req, res) {
   try{
     let user = await User.findById(req.params.id).populate('followers');
     let campgrounds = await Campground.find().where("author.id").equals(user).exec();
